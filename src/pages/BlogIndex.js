@@ -47,16 +47,16 @@ const ButtonContainer = tw.div`flex justify-center`;
 const LoadMoreButton = tw(PrimaryButton)`mt-16 mx-auto`;
 
 export default ({
-  headingText = "Blog Posts",
+  headingText = "",
   posts = [
     {
       imageSrc:
         "https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
-      category: "Travel Tips",
+      category: "Home Decor",
       date: "April 21, 2020",
       title: "Safely Travel in Foreign Countries",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "Welcome to Cozy Throwie, where we transform your living spaces into havens of comfort and style. Our blog delves into the art of home decor, offering inspiration, practical tips, and the latest trends to help you create a home that reflects your personality and warmth.",
       url: "https://timerse.com",
       featured: true
     },
@@ -89,9 +89,9 @@ export default ({
       <Header />
       <Container>
         <ContentWithPaddingXl>
-          <HeadingRow>
+          {/* <HeadingRow>
             <Heading>{headingText}</Heading>
-          </HeadingRow>
+          </HeadingRow> */}
           <Posts>
             {posts.slice(0, visible).map((post, index) => (
               <PostContainer key={index} featured={post.featured}>
