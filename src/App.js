@@ -94,7 +94,7 @@ import AgencyLandingPage from "demos/AgencyLandingPage.js";
 // import LoginPage from "pages/Login.js";
 // import SignupPage from "pages/Signup.js";
 // import PricingPage from "pages/Pricing.js";
-// import AboutUsPage from "pages/AboutUs.js";
+import AboutUsPage from "pages/AboutUs.js";
 // import ContactUsPage from "pages/ContactUs.js";
 import BlogIndexPage from "pages/BlogIndex.js";
 // import TermsOfServicePage from "pages/TermsOfService.js";
@@ -120,7 +120,7 @@ export default function App() {
           <Route path="/components/:type/:name" element={<ComponentRenderer />} /> */}
           <Route path="/thank-you" element={<ThankYouPage />} />
           <Route path="/" element={<AgencyLandingPage/>} />
-          <Route path="/blog/:blogID" element={<BlogIndexPage />} />
+          <Route path="/blog/:blogId" element={<AboutUsPage />} />
         </Routes>
       </Router>
     </>
