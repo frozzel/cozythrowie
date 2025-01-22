@@ -3,10 +3,13 @@ import { motion } from "framer-motion";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
+import { ReactComponent as FacebookIcon } from "../../images/facebook-icon.svg";
+import { ReactComponent as TwitterIcon } from "../../images/twitter-icon.svg";
+import { ReactComponent as YoutubeIcon } from "../../images/youtube-icon.svg";
 
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 
-import logo from "../../images/new/cozy-throwie-high-resolution-logo-transparent.png";
+import logo from "../../images/new/cozy-throwie-high-resolution-logo-transparent (1).png";
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 
@@ -43,10 +46,10 @@ export const LogoLink = styled(NavLink)`
 
 export const MobileNavLinksContainer = tw.nav`flex flex-1 items-center justify-between`;
 export const NavToggle = tw.button`
-  lg:hidden z-20 focus:outline-none hocus:text-primary-500 transition duration-300
+  lg:hidden z-20 focus:outline-none hocus:text-logo-500 transition duration-300
 `;
 export const MobileNavLinks = motion(styled.div`
-  ${tw`lg:hidden z-10 fixed top-0 inset-x-0 mx-4 my-6 p-8 border text-center rounded-lg text-gray-900 bg-white`}
+  ${tw`lg:hidden z-10 fixed top-0 inset-x-0 mx-4 my-6 p-8 border text-center rounded-lg text-gray-900 bg-logo-100`}
   ${NavLinks} {
     ${tw`flex flex-col items-center`}
   }
@@ -54,6 +57,13 @@ export const MobileNavLinks = motion(styled.div`
 
 export const DesktopNavLinks = tw.nav`
   hidden lg:flex flex-1 justify-between items-center
+`;
+const SocialLinksContainer = tw.div``;
+const SocialLink = styled.a`
+  ${tw`cursor-pointer inline-block text-gray-100 hover:text-site-500 transition duration-300 mx-4`}
+  svg {
+    ${tw`w-5 h-5`}
+  }
 `;
 
 export default ({ roundedHeaderButton = false, logoLink, links, className, collapseBreakpointClass = "lg" }) => {
@@ -79,7 +89,18 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
       <NavLink href="/#" tw="lg:ml-12!">
         Login
       </NavLink> */}
-      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/#">Sign Up</PrimaryLink>
+      {/* <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/#">Sign Up</PrimaryLink> */}
+                <SocialLinksContainer>
+                  <SocialLink href="https://facebook.com">
+                    <FacebookIcon />
+                  </SocialLink>
+                  <SocialLink href="https://twitter.com">
+                    <TwitterIcon />
+                  </SocialLink>
+                  <SocialLink href="https://youtube.com">
+                    <YoutubeIcon />
+                  </SocialLink>
+                </SocialLinksContainer>
     </NavLinks>
   ];
 
