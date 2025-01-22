@@ -6,6 +6,7 @@ import Couch from "images/new/Cozy-home-interior-ideas-and-decor.jpg";
 
 import Header, { NavLink, NavLinks, PrimaryLink, LogoLink, NavToggle, DesktopNavLinks } from "../headers/light.js";
 import ResponsiveVideoEmbed from "../../helpers/ResponsiveVideoEmbed.js";
+import { useParams } from "react-router-dom";
 
 const StyledHeader = styled(Header)`
   ${tw`pt-8 max-w-none`}
@@ -56,7 +57,8 @@ const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
   }
 `;
 
-export default () => {
+export default ({heading}) => {
+  console.log(heading);
   const navLinks = [
     <NavLinks key={1}>
       {/* <NavLink href="#">
@@ -78,8 +80,13 @@ export default () => {
       </PrimaryLink> */}
     </NavLinks>
   ];
+  const { blogId } = useParams(); // Extract blogId from the URL
 
-  return (
+  // Optional: Log the blogId to confirm
+ 
+
+
+  return (<>
     <Container>
       <OpacityOverlay />
       <HeroContainer>
@@ -87,11 +94,17 @@ export default () => {
         <TwoColumn>
           {/* <LeftColumn> */}
             {/* <Notification>We have now launched operations in Europe.</Notification> */}
+            {!blogId &&(
             <Heading>
               <span>Snuggle Up</span>
               <br />
               <span>In Style</span>
-            </Heading>
+            </Heading>)} : {(
+            <Heading>
+              <span>{heading}</span>
+              <br />
+              <span></span>
+            </Heading>)}
             {/* <PrimaryAction>Read Customer Stories</PrimaryAction> */}
           {/* </LeftColumn> */}
           {/* <RightColumn> */}
@@ -103,5 +116,5 @@ export default () => {
         </TwoColumn>
       </HeroContainer>
     </Container>
-  );
+    </> );
 };
