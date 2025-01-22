@@ -28,19 +28,19 @@ const PostContainer = styled.div`
         ${tw`sm:-mr-4 sm:pl-8 sm:flex-1 sm:rounded-none sm:rounded-r-lg sm:border-t-2 sm:border-l-0`}
       }
       ${Description} {
-        ${tw`text-sm mt-3 leading-loose text-gray-600 font-medium`}
+        ${tw`text-sm mt-3 leading-loose text-logo-500 font-medium`}
       }
     `}
 `;
-const Post = tw.div`cursor-pointer flex flex-col bg-gray-100 rounded-lg`;
+const Post = tw.div`cursor-pointer flex flex-col bg-logo-100 rounded-lg`;
 const Image = styled.div`
   ${props => css`background-image: url("${props.imageSrc}");`}
   ${tw`h-64 w-full bg-cover bg-center rounded-t-lg`}
 `;
 const Info = tw.div`p-8 border-2 border-t-0 rounded-lg rounded-t-none`;
-const Category = tw.div`uppercase text-primary-500 text-xs font-bold tracking-widest leading-loose after:content after:block after:border-b-2 after:border-primary-500 after:w-8`;
-const CreationDate = tw.div`mt-4 uppercase text-gray-600 italic font-semibold text-xs`;
-const Title = tw.div`mt-1 font-black text-2xl text-gray-900 group-hover:text-primary-500 transition duration-300`;
+const Category = tw.div`uppercase text-logo-300 text-xs font-bold tracking-widest leading-loose after:content after:block after:border-b-2 after:border-gray-100 after:w-24`;
+const CreationDate = tw.div`mt-4 uppercase text-site-300 italic font-semibold text-xs`;
+const Title = tw.div`mt-1 font-black text-2xl text-site-100 group-hover:text-gray-100 transition duration-300`;
 const Description = tw.div``;
 
 const ButtonContainer = tw.div`flex justify-center`;
@@ -57,7 +57,7 @@ export default ({
       title: "Safely Travel in Foreign Countries",
       description:
         "Welcome to Cozy Throwie, where we transform your living spaces into havens of comfort and style. Our blog delves into the art of home decor, offering inspiration, practical tips, and the latest trends to help you create a home that reflects your personality and warmth.",
-      url: "https://timerse.com",
+      url: "/blog/1",
       featured: true
     },
     getPlaceholderPost(),
@@ -86,7 +86,7 @@ export default ({
   };
   return (
     <AnimationRevealPage>
-      <Header />
+      {/* <Header /> */}
       <Container>
         <ContentWithPaddingXl>
           {/* <HeadingRow>
@@ -114,7 +114,7 @@ export default ({
           )}
         </ContentWithPaddingXl>
       </Container>
-      <Footer />
+      {/* <Footer /> */}
     </AnimationRevealPage>
   );
 };

@@ -14,11 +14,13 @@ import FAQ from "components/faqs/SimpleWithSideImage.js";
 import ContactUsForm from "components/forms/TwoColContactUsWithIllustration.js";
 import Footer from "components/footers/MiniCenteredFooter.js";
 import customerSupportIllustrationSrc from "images/customer-support-illustration.svg";
+import BlogIndex from "pages/BlogIndex";
 
 export default () => (
   <AnimationRevealPage>
     <Hero />
-    <MainFeature />
+    <BlogIndex />
+    {/* <MainFeature />
     <Features />
     <MainFeature2 />
     <Portfolio />
@@ -65,8 +67,8 @@ export default () => (
         </>
       }
     />
-    <Blog />
-    <ContactUsForm />
+    <Blog /> */}
+    {/* <ContactUsForm /> */}
     <Footer />
   </AnimationRevealPage>
 );
