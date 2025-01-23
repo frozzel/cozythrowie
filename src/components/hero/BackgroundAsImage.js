@@ -17,10 +17,7 @@ const StyledHeader = styled(Header)`
     ${tw`text-gray-100 hover:text-primary-500`}
   }
 `;
-const Container = styled.div`
-  ${tw`relative -mx-8 -mt-8 bg-center bg-cover`}
-  background-image: url("${Couch}");
-`;
+
 
 const OpacityOverlay = tw.div`z-10 absolute inset-0 bg-logo-300 opacity-25`;
 
@@ -57,8 +54,11 @@ const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
   }
 `;
 
-export default ({heading}) => {
-  console.log(heading);
+export default ({heading, wallpaper}) => {
+  const Container = styled.div`
+  ${tw`relative -mx-8 -mt-8 bg-center bg-cover`}
+  background-image: url("${wallpaper? wallpaper : Couch}");
+`;
   const navLinks = [
     <NavLinks key={1}>
       {/* <NavLink href="#">
@@ -95,13 +95,13 @@ export default ({heading}) => {
           {/* <LeftColumn> */}
             {/* <Notification>We have now launched operations in Europe.</Notification> */}
             {!blogId &&(
-            <Heading>
+            <Heading wallpaper={wallpaper}>
               <span>Snuggle Up</span>
               <br />
               <span>In Style</span>
             </Heading>)} : {(
-            <Heading>
-              <span>{heading}</span>
+            <Heading wallpaper={wallpaper}>
+              {/* <span>{heading}</span> */}
               <br />
               <span></span>
             </Heading>)}

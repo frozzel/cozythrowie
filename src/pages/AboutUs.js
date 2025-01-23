@@ -12,6 +12,7 @@ import Features from "components/features/ThreeColSimple.js";
 // import Features from "components/features/ThreeColWithSideImage.js";
 import TeamCardGrid from "components/cards/ProfileThreeColGrid.js";
 import Hero from "components/hero/BackgroundAsImage";
+import SpringPic from "images/new/SpringPic.webp";
 
 import SupportIconImage from "images/support-icon.svg";
 import ShieldIconImage from "images/shield-icon.svg";
@@ -21,13 +22,13 @@ const Subheading = tw.span`uppercase tracking-wider text-sm`;
 export default () => {
   return (
     <AnimationRevealPage>
-      <Hero heading="10 Spring Home Decor Ideas You Must Try" />
+      <Hero heading="10 Spring Home Decor Ideas You Must Try" wallpaper={SpringPic}/>
       <MainFeature1
         subheading={<Subheading>About Treact</Subheading>}
-        heading="We are a modern design agency."
+        heading="10 Spring Home Decor Ideas You Must Try"
         buttonRounded={false}
         primaryButtonText="See Portfolio"
-        imageSrc="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80"
+        imageSrc={SpringPic}
       />
       <MainFeature1
         subheading={<Subheading>Our Vision</Subheading>}
