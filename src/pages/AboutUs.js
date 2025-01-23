@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import tw from "twin.macro";
 import styled from "styled-components"; //eslint-disable-line
@@ -18,8 +18,24 @@ import SupportIconImage from "images/support-icon.svg";
 import ShieldIconImage from "images/shield-icon.svg";
 import CustomerLoveIconImage from "images/simple-icon.svg";
 
+import { testApi } from "api/test";
+
 const Subheading = tw.span`uppercase tracking-wider text-sm`;
 export default () => {
+
+  // testApi();
+  const fetchData = async () => {
+    try {
+      const response = await testApi();
+      console.log("In Page", response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  });
   return (
     <AnimationRevealPage>
       <Hero heading="10 Spring Home Decor Ideas You Must Try" wallpaper={SpringPic}/>
