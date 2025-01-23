@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts";
 import tw from "twin.macro";
@@ -8,6 +8,7 @@ import Header from "components/headers/light.js";
 import Footer from "components/footers/FiveColumnWithInputForm.js";
 import { SectionHeading } from "components/misc/Headings";
 import { PrimaryButton } from "components/misc/Buttons";
+import { getBlogs } from "api/blog";
 
 const HeadingRow = tw.div`flex`;
 const Heading = tw(SectionHeading)`text-gray-900`;
@@ -84,6 +85,19 @@ export default ({
   const onLoadMoreClick = () => {
     setVisible(v => v + 6);
   };
+
+  const fetchBlog = async () => {
+    try {
+      const response = await getBlogs();
+      console.log( response.message);
+    } catch (error) {
+      throw error;
+    }
+  }
+  useEffect(() => {
+    fetchBlog();
+  }, []);
+
   return (
     <AnimationRevealPage>
       {/* <Header /> */}
