@@ -97,7 +97,7 @@ export default ({
   useEffect(() => {
     fetchBlog();
   }, []);
-
+  
   return (
     <AnimationRevealPage>
       {/* <Header /> */}
