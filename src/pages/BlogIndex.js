@@ -49,7 +49,17 @@ const LoadMoreButton = tw(PrimaryButton)`mt-16 mx-auto`;
 
 export default ({
   headingText = "",
-  posts = [
+ 
+}) => {
+  const [visible, setVisible] = useState(7);
+  const [blogs, setBlogs] = useState([]);
+  const onLoadMoreClick = () => {
+    setVisible(v => v + 6);
+  };
+
+  // const test = blogs[0]
+  // console.log(test);
+ const posts = [
     {
       imageSrc:
         "https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
@@ -61,6 +71,7 @@ export default ({
       url: "/blog/1",
       featured: true
     },
+    // blogs,
     getPlaceholderPost(),
     getPlaceholderPost(),
     getPlaceholderPost(),
@@ -80,16 +91,21 @@ export default ({
     getPlaceholderPost(),
     getPlaceholderPost()
   ]
-}) => {
-  const [visible, setVisible] = useState(7);
-  const onLoadMoreClick = () => {
-    setVisible(v => v + 6);
-  };
 
   const fetchBlog = async () => {
     try {
       const response = await getBlogs();
-      console.log( response.message);
+      // console.log( response.message[0].featuredPhotoUrl);
+      const test = {
+        imageSrc: response.message[0].featuredPhotoUrl,
+        title: response.message[0].titleMain,
+        description: response.message[0].descriptionSummary,
+        url: `/blog/${response.message[0]._id}`,
+        featured: true,
+        category: "Home Decor",
+        date: response.message[0].createdAt,
+      }
+      setBlogs(test);
     } catch (error) {
       throw error;
     }
@@ -97,7 +113,7 @@ export default ({
   useEffect(() => {
     fetchBlog();
   }, []);
-  
+console.log(blogs);
   return (
     <AnimationRevealPage>
       {/* <Header /> */}
@@ -108,9 +124,11 @@ export default ({
           </HeadingRow> */}
           <Posts>
             {posts.slice(0, visible).map((post, index) => (
+              console.log(post),
               <PostContainer key={index} featured={post.featured}>
                 <Post className="group" as="a" href={post.url}>
-                  <Image imageSrc={post.imageSrc} />
+                  <Image imageSrc={post.photoUrl} />
+                  {/* <img src={post.imageSrc} alt="blog" className="img" /> */}
                   <Info>
                     <Category>{post.category}</Category>
                     <CreationDate>{post.date}</CreationDate>
