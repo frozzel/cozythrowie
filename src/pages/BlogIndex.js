@@ -52,7 +52,7 @@ export default ({
  
 }) => {
   const [visible, setVisible] = useState(7);
-  const [blogs, setBlogs] = useState([]);
+  // const [blogs, setBlogs] = useState([]);
   const onLoadMoreClick = () => {
     setVisible(v => v + 6);
   };
@@ -92,43 +92,41 @@ export default ({
     getPlaceholderPost()
   ]
 
-  const fetchBlog = async () => {
-    try {
-      const response = await getBlogs();
-      // console.log( response.message[0].featuredPhotoUrl);
-      const test = {
-        imageSrc: response.message[0].featuredPhotoUrl,
-        title: response.message[0].titleMain,
-        description: response.message[0].descriptionSummary,
-        url: `/blog/${response.message[0]._id}`,
-        featured: true,
-        category: "Home Decor",
-        date: response.message[0].createdAt,
-      }
-      setBlogs(test);
-    } catch (error) {
-      throw error;
-    }
-  }
-  useEffect(() => {
-    fetchBlog();
-  }, []);
-console.log(blogs);
+//   const fetchBlog = async () => {
+//     try {
+//       const response = await getBlogs();
+//       // console.log( response.message[0].featuredPhotoUrl);
+//       const test = {
+//         imageSrc: response.message[0].featuredPhotoUrl,
+//         title: response.message[0].titleMain,
+//         description: response.message[0].descriptionSummary,
+//         url: `/blog/${response.message[0]._id}`,
+//         featured: true,
+//         category: "Home Decor",
+//         date: response.message[0].createdAt,
+//       }
+//       setBlogs(test);
+//     } catch (error) {
+//       throw error;
+//     }
+//   }
+//   useEffect(() => {
+//     fetchBlog();
+//   }, []);
+// console.log(blogs);
   return (
     <AnimationRevealPage>
-      {/* <Header /> */}
+      <Header />
       <Container>
         <ContentWithPaddingXl>
-          {/* <HeadingRow>
+          <HeadingRow>
             <Heading>{headingText}</Heading>
-          </HeadingRow> */}
+          </HeadingRow>
           <Posts>
             {posts.slice(0, visible).map((post, index) => (
-              console.log(post),
               <PostContainer key={index} featured={post.featured}>
                 <Post className="group" as="a" href={post.url}>
                   <Image imageSrc={post.photoUrl} />
-                  {/* <img src={post.imageSrc} alt="blog" className="img" /> */}
                   <Info>
                     <Category>{post.category}</Category>
                     <CreationDate>{post.date}</CreationDate>
@@ -146,7 +144,7 @@ console.log(blogs);
           )}
         </ContentWithPaddingXl>
       </Container>
-      {/* <Footer /> */}
+      <Footer />
     </AnimationRevealPage>
   );
 };

@@ -105,6 +105,8 @@ import ComponentRenderer from "ComponentRenderer.js";
 import ThankYouPage from "ThankYouPage.js";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import BlogIndex from "pages/BlogIndex.js";
+import GridWithFeaturedPost from "components/blogs/GridWithFeaturedPost";
 
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component

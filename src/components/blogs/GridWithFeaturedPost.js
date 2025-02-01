@@ -6,6 +6,8 @@ import { css } from "styled-components/macro";
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings";
 import { SectionDescription } from "components/misc/Typography";
 import { ReactComponent as SvgDotPatternIcon } from "images/dot-pattern.svg";
+import { useEffect, useState } from "react";
+import { getBlogs } from "api/blog";
 
 const HeadingContainer = tw.div`text-center`;
 const Subheading = tw(SubheadingBase)`mb-4`;
@@ -63,66 +65,91 @@ export default ({
   subheading = "",
   heading = "We love writing.",
   description = "",
-  posts = [
-    {
-      postImageSrc:
-        "https://images.unsplash.com/photo-1563784462041-5f97ac9523dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
-      authorImageSrc:
-        "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.95&w=512&h=512&q=80",
-      title: "Enjoying the beach life while on a vacation",
-      description:
-        "Lorem ipsum dolor sit amet, consecteturious adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua now ele.",
-      authorName: "Adam Cuppy",
-      authorProfile: "Vlogger",
-      url: "https://reddit.com",
-      featured: true
-    },
-    {
-      postImageSrc:
-        "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
-      title: "Getting the most out of your vacation",
-      authorName: "Aaron Patterson",
-      url: "https://reddit.com"
-    },
-    {
-      postImageSrc:
-        "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
-      title: "Choosing the perfect Safaris in Africa",
-      authorName: "Sam Phipphen",
-      url: "https://reddit.com"
-    },
-    {
-      postImageSrc:
-        "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
-      title: "Hiking during the monsoon in Asia",
-      authorName: "Tony Hawk",
-      url: "https://timerse.com"
-    },
-    {
-      postImageSrc:
-        "https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
-      title: "Must carry items while travelling to Thailand",
-      authorName: "Himali Turn",
-      url: "https://timerse.com"
-    }
-  ]
+  // posts = [
+  //   {
+  //     postImageSrc:
+  //       "https://images.unsplash.com/photo-1563784462041-5f97ac9523dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
+  //     authorImageSrc:
+  //       "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.95&w=512&h=512&q=80",
+  //     title: "Enjoying the beach life while on a vacation",
+  //     description:
+  //       "Lorem ipsum dolor sit amet, consecteturious adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua now ele.",
+  //     authorName: "Adam Cuppy",
+  //     authorProfile: "Vlogger",
+  //     url: "https://reddit.com",
+  //     featured: true
+  //   },
+  //   {
+  //     postImageSrc:
+  //       "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
+  //     title: "Getting the most out of your vacation",
+  //     authorName: "Aaron Patterson",
+  //     url: "https://reddit.com"
+  //   },
+  //   {
+  //     postImageSrc:
+  //       "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
+  //     title: "Choosing the perfect Safaris in Africa",
+  //     authorName: "Sam Phipphen",
+  //     url: "https://reddit.com"
+  //   },
+  //   {
+  //     postImageSrc:
+  //       "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
+  //     title: "Hiking during the monsoon in Asia",
+  //     authorName: "Tony Hawk",
+  //     url: "https://timerse.com"
+  //   },
+  //   {
+  //     postImageSrc:
+  //       "https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80",
+  //     title: "Must carry items while travelling to Thailand",
+  //     authorName: "Himali Turn",
+  //     url: "https://timerse.com"
+  //   }
+  // ]
+
+  
 }) => {
+  const [posts, setPosts] = useState([]);
+  const fetchBlog = async () => {
+    try {
+      const response = await getBlogs();
+      
+      // Add 'category' key to only the first post
+      const updatedPosts = response.message.map((post, index) =>
+        index === 0 ? { ...post, featured: true } : post
+      );
+  
+      setPosts(updatedPosts);
+    } catch (error) {
+      throw error;
+    }
+  };
+  useEffect(() => {
+    fetchBlog();
+  }, []);
+
+  posts.forEach((post, index) => {
+    if (index === 0) post.category = true;
+  });
+  console.log(posts);
   return (
     <Container>
       <ContentWithPaddingXl>
-        <HeadingContainer>
+        {/* <HeadingContainer>
           {subheading && <Subheading>{subheading}</Subheading>}
           {heading && <Heading>{heading}</Heading>}
           {description && <Description>{description}</Description>}
-        </HeadingContainer>
+        </HeadingContainer> */}
         <Posts>
           {posts.map((post, index) => (
             <PostContainer featured={post.featured} key={index}>
-              <Post className="group" href={post.url}>
-                <PostImage imageSrc={post.postImageSrc} />
+              <Post className="group" href={`/blog/${post._id}`}>
+                <PostImage imageSrc={post.featuredPhotoUrl} />
                 <PostText>
-                  <PostTitle>{post.title}</PostTitle>
-                  {post.featured && <PostDescription>{post.description}</PostDescription>}
+                  <PostTitle>{post.titleMain}</PostTitle>
+                  {post.featured && <PostDescription>{post.descriptionSummary}</PostDescription>}
                   <AuthorInfo>
                     {post.featured && <AuthorImage src={post.authorImageSrc} />}
                     <AuthorTextInfo>

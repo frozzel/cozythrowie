@@ -15,11 +15,13 @@ import ContactUsForm from "components/forms/TwoColContactUsWithIllustration.js";
 import Footer from "components/footers/MiniCenteredFooter.js";
 import customerSupportIllustrationSrc from "images/customer-support-illustration.svg";
 import BlogIndex from "pages/BlogIndex";
+import GridWithFeaturedPost from "components/blogs/GridWithFeaturedPost";
 
 export default () => (
   <AnimationRevealPage>
     <Hero />
-    <BlogIndex />
+    <GridWithFeaturedPost />
+    {/* <BlogIndex /> */}
     {/* <MainFeature />
     <Features />
     <MainFeature2 />
