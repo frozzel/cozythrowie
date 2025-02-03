@@ -8,7 +8,7 @@ import { ReactComponent as TwitterIcon } from "../../images/twitter-icon.svg";
 import { ReactComponent as YoutubeIcon } from "../../images/youtube-icon.svg";
 
 
-const Container = tw(ContainerBase)`bg-site-600 text-gray-100 -mx-8 -mb-8`
+const Container = tw(ContainerBase)`bg-site-600 text-gray-100 -mx-8 -mb-8 mt-8`;
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
 
 const Row = tw.div`flex items-center justify-center flex-col px-8`

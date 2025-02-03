@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import Couch from "images/new/Cozy-home-interior-ideas-and-decor.jpg";
 
+
 import Header, { NavLink, NavLinks, PrimaryLink, LogoLink, NavToggle, DesktopNavLinks } from "../headers/light.js";
 import ResponsiveVideoEmbed from "../../helpers/ResponsiveVideoEmbed.js";
 import { useParams } from "react-router-dom";
@@ -18,7 +19,7 @@ const StyledHeader = styled(Header)`
   }
 `;
 
-
+ 
 const OpacityOverlay = tw.div`z-10 absolute inset-0 bg-logo-300 opacity-25`;
 
 const HeroContainer = tw.div`z-20 relative px-4 sm:px-8 max-w-screen-xl mx-auto justify-center`;
@@ -80,10 +81,8 @@ export default ({heading, wallpaper}) => {
       </PrimaryLink> */}
     </NavLinks>
   ];
-  const { blogId } = useParams(); // Extract blogId from the URL
+  const { _id } = useParams(); // Extract blogId from the URL
 
-  // Optional: Log the blogId to confirm
- 
 
 
   return (<>
@@ -92,27 +91,19 @@ export default ({heading, wallpaper}) => {
       <HeroContainer>
         <StyledHeader  />
         <TwoColumn>
-          {/* <LeftColumn> */}
-            {/* <Notification>We have now launched operations in Europe.</Notification> */}
-            {!blogId &&(
+  
+            {!_id &&(
             <Heading wallpaper={wallpaper}>
               <span>Snuggle Up</span>
               <br />
               <span>In Style</span>
             </Heading>)} : {(
-            <Heading wallpaper={wallpaper}>
-              {/* <span>{heading}</span> */}
+              <Heading wallpaper={wallpaper}>
+              <span>{heading?.split(':')[0].trim()}</span>
               <br />
               <span></span>
-            </Heading>)}
-            {/* <PrimaryAction>Read Customer Stories</PrimaryAction> */}
-          {/* </LeftColumn> */}
-          {/* <RightColumn> */}
-            {/* <StyledResponsiveVideoEmbed
-              url="//player.vimeo.com/video/374265101?title=0&portrait=0&byline=0&autoplay=0&responsive=1"
-              background="transparent"
-            /> */}
-          {/* </RightColumn> */}
+            </Heading>)};
+  
         </TwoColumn>
       </HeroContainer>
     </Container>
