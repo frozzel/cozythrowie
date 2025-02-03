@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import tw from "twin.macro";
 import styled from "styled-components"; //eslint-disable-line
@@ -18,16 +18,21 @@ import SupportIconImage from "images/support-icon.svg";
 import ShieldIconImage from "images/shield-icon.svg";
 import CustomerLoveIconImage from "images/simple-icon.svg";
 
-import { testApi } from "api/test";
+
+import { getSingleBlog } from "api/blog";
+import { useParams } from "react-router-dom";
 
 const Subheading = tw.span`uppercase tracking-wider text-sm`;
 export default () => {
 
-  // testApi();
+  const {_id} = useParams();
+  const [blog, setBlog] = useState();
+
   const fetchData = async () => {
     try {
-      const response = await testApi();
-      console.log("In Page", response);
+      const response = await getSingleBlog(_id);
+      setBlog(response.message);
+     
     } catch (error) {
       console.error(error);
     }
@@ -35,51 +40,43 @@ export default () => {
 
   useEffect(() => {
     fetchData();
-  });
+  }, [_id]);
+
+  const {titleMain, featuredPhotoUrl, } = blog || {};
+  
   return (
     <AnimationRevealPage>
-      <Hero heading="10 Spring Home Decor Ideas You Must Try" wallpaper={SpringPic}/>
+      <Hero heading={titleMain} wallpaper={featuredPhotoUrl}/>
       <MainFeature1
-        subheading={<Subheading>About Treact</Subheading>}
-        heading="10 Spring Home Decor Ideas You Must Try"
+        subheading={<Subheading></Subheading>}
+        heading={titleMain}
         buttonRounded={false}
         primaryButtonText="See Portfolio"
-        imageSrc={SpringPic}
+        imageSrc={featuredPhotoUrl}
+        description={blog?.descriptionSummary}
       />
-      <MainFeature1
-        subheading={<Subheading>Our Vision</Subheading>}
-        heading="We aim to disrupt the design space."
-        buttonRounded={false}
-        primaryButtonText="Contact Us"
-        imageSrc="https://images.unsplash.com/3/doctype-hi-res.jpg?ixlib=rb-1.2.1&auto=format&fit=crop&w=768&q=80"
-        textOnLeft={false}
-      />
-      {/* <Features
-        subheading={<Subheading>Our Values</Subheading>}
-        heading="We follow these."
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        cards={[
-          {
-            imageSrc: SupportIconImage,
-            title: "24/7 Support",
-            description: "Lorem ipsum donor amet siti ceali placeholder text alipiscing elit sed do eiusmod temport"
-          },
-          {
-            imageSrc: ShieldIconImage,
-            title: "Strong Teams",
-            description: "Lorem ipsum donor amet siti ceali placeholder text alipiscing elit sed do eiusmod temport"
-          },
-          {
-            imageSrc: CustomerLoveIconImage,
-            title: "Customer Satisfaction",
-            description: "Lorem ipsum donor amet siti ceali placeholder text alipiscing elit sed do eiusmod temport"
-          },
-        ]}
-        linkText=""
-      /> */}
-      {/* <TeamCardGrid 
-        subheading={<Subheading>Our Team</Subheading>}
-      /> */}
+      {blog?.sections?.map((section, index) => {
+        return (
+          <MainFeature1
+            key={index}
+            subheading={section.title}
+            heading={''}
+            buttonRounded={false}
+            primaryButtonText="See Portfolio"
+            productLinks="Product Links"
+            imageSrc={section.photoUrl}
+            description={section.description}
+            linkText={section.productDescription.map((product) => {
+              return product;
+            },
+            
+            )}
+          />
+        );
+      })
+    } 
+
+
       <Footer />
     </AnimationRevealPage>
   );
