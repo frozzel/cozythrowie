@@ -4,8 +4,9 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { ReactComponent as FacebookIcon } from "../../images/facebook-icon.svg";
-import { ReactComponent as TwitterIcon } from "../../images/twitter-icon.svg";
-import { ReactComponent as YoutubeIcon } from "../../images/youtube-icon.svg";
+import { ReactComponent as TwitterIcon } from "../../images/X2-icon.svg";
+import { ReactComponent as YoutubeIcon } from "../../images/instagram-icon.svg";
+import { ReactComponent as Pinterest } from "../../images/pinterest2-icon.svg";
 
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 
@@ -99,6 +100,9 @@ export default ({ roundedHeaderButton = false, logoLink, wallpaper, links, class
                   </SocialLink>
                   <SocialLink href="https://youtube.com">
                     <YoutubeIcon />
+                  </SocialLink>
+                    <SocialLink href="https://pinterest.com">
+                    <Pinterest />
                   </SocialLink>
                 </SocialLinksContainer>
     </NavLinks>
