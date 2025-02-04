@@ -4,8 +4,9 @@ import styled from "styled-components";
 import {Container as ContainerBase } from "components/misc/Layouts.js"
 import logo from "../../images/new/cozy-throwie-high-resolution-logo-transparent (1).png";
 import { ReactComponent as FacebookIcon } from "../../images/facebook-icon.svg";
-import { ReactComponent as TwitterIcon } from "../../images/twitter-icon.svg";
-import { ReactComponent as YoutubeIcon } from "../../images/youtube-icon.svg";
+import { ReactComponent as TwitterIcon } from "../../images/X2-icon.svg";
+import { ReactComponent as YoutubeIcon } from "../../images/instagram-icon.svg";
+import { ReactComponent as Pinterest } from "../../images/pinterest2-icon.svg";
 
 
 const Container = tw(ContainerBase)`bg-site-600 text-gray-100 -mx-8 -mb-8 mt-8`;
@@ -54,6 +55,9 @@ export default () => {
             </SocialLink>
             <SocialLink href="https://youtube.com">
               <YoutubeIcon />
+            </SocialLink>
+            <SocialLink href="https://pinterest.com">
+              <Pinterest />
             </SocialLink>
           </SocialLinksContainer>
           <CopyrightText>

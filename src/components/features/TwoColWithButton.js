@@ -94,7 +94,7 @@ export default ({
             {linkText.length > 0 && (
               <LinkList>
                 {linkText.map((link, index) => (
-                  <LinkItem key={index} href={link.productUrl} target="_blank" rel="noopener noreferrer">
+                  <LinkItem key={index} href={`${link.productUrl}+&tag=cozythrowie-20`} target="_blank" rel="noopener noreferrer">
                     {link.description}
                   </LinkItem>
                 ))}
