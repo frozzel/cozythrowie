@@ -95,7 +95,7 @@ export default ({ roundedHeaderButton = false, logoLink, wallpaper, links, class
                   <SocialLink href="https://facebook.com">
                     <FacebookIcon />
                   </SocialLink>
-                  <SocialLink href="https://twitter.com">
+                  <SocialLink href="https://x.com/CozyThrowie">
                     <TwitterIcon />
                   </SocialLink>
                   <SocialLink href="https://youtube.com">
