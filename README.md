@@ -1,5 +1,5 @@
 <div>
-<a href=""><img src="https://github.com/frozzel/cozythrowie/blob/f3c4dbc91a5344158e7921b3cb44ab04966654b6/src/images/new/SpringPic%20copy.png" align="center" height="" width="60%" ></a></div>
+<a href=""><img src="https://github.com/frozzel/cozythrowie/blob/f3c4dbc91a5344158e7921b3cb44ab04966654b6/src/images/new/SpringPic%20copy.png" align="center" height="" width="100%" ></a></div>
 
 # Cozy Throwie
 
