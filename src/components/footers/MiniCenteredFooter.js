@@ -56,7 +56,7 @@ export default () => {
             <SocialLink href="https://www.instagram.com/cozythrowie/">
               <YoutubeIcon />
             </SocialLink>
-            <SocialLink href="https://pinterest.com">
+            <SocialLink href="https://www.pinterest.com/cozythrowie/">
               <Pinterest />
             </SocialLink>
           </SocialLinksContainer>
