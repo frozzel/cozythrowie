@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useEffect } from "react";
 import GlobalStyles from 'styles/GlobalStyles';
 import { css } from "styled-components/macro"; //eslint-disable-line
+import ReactGA from 'react-ga4';
+
 
 /*
  * This is the entry point component of this project. You can change the below exported default App component to any of
@@ -111,7 +113,11 @@ import GridWithFeaturedPost from "components/blogs/GridWithFeaturedPost";
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
   // return <AnimationRevealPage disabled>xxxxxxxxxx</AnimationRevealPage>;
+  ReactGA.initialize('G-SR076TJW32');
 
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname });
+  }, []);
 
   return (
     <>
