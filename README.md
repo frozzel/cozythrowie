@@ -97,15 +97,20 @@ Pull requests are welcome! Please follow these steps:
 4. Push to your fork (`git push origin feature-name`)
 5. Submit a pull request
 
+## Contributing
+
+  Created by: [@frozzel](https://github.com/frozzel)
+  
+  Please contact me with questions at: [@frozzel](mailto:frozzel@me.com)
+
 ## License
-MIT License. See `LICENSE` for more details.
 
-## Contact
-For questions or collaboration, reach out at [your email or social link].
+  [![Github license](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Feel free to contribute to this project or reach out for support!
 
+---
 ## Available Script
 
 In the project directory, you can run:
