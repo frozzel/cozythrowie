@@ -5,7 +5,7 @@
 
 Cozy Throwie is a modern, AI-powered blogging platform built on the **MERN** (MongoDB, Express, React, Node.js) stack. It automates blog creation and social media posts using **ChatGPT** for text generation and **DALL·E 3** for image generation, making content creation seamless and efficient.
 
- [![DIGITALOCEAN](https://img.shields.io/badge/Cozy_Throwie-0080FF.svg?style=for-the-badge&logo=DigitalOcean&logoColor=white)](https://cozythowie.com)
+ [![DIGITALOCEAN](https://img.shields.io/badge/DIGITALOCEAN-SITE-0080FF.svg?style=for-the-badge&logo=DigitalOcean&logoColor=white)](https://cozythowie.com)
 
 ---
 
